@@ -1,0 +1,36 @@
+<div class="summary-container">
+  <table mat-table [dataSource]="rosters" class="roster-table" matSort matSortActive="submitDate" matSortDisableClear
+    matSortDirection="asc" multiTemplateDataRows class="mat-elevation-z8">
+    <!-- Date Column -->
+    <ng-container matColumnDef="submitDate">
+      <th mat-header-cell *matHeaderCellDef>Roster Submit Date</th>
+      <td mat-cell *matCellDef="let row">{{row.submitDate | date: 'medium'}}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="hasTheHatDecided">
+      <th mat-header-cell *matHeaderCellDef>Has the Hat Spoken?</th>
+      <td mat-cell *matCellDef="let row">{{row.hasTheHatDecided ? 'Yes' : 'No'}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="download">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+        <a *ngIf="row.hasTheHatDecided" href="#" (click)="downloadRoster($event,row.id)"><img src="../assets/download.png" width="20px"/></a>
+        <a *ngIf="!row.hasTheHatDecided" href="#" (click)="downloadRoster($event,row.id)"><img src="../assets/wip.png" width="20px"/></a>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="students">
+      <td mat-cell *matCellDef="let detailRow" [attr.colspan]="displayedColumns.length">
+        <div class="roster-detail" [@detailExpand]="detailRow == expandedRow ? 'expanded' : 'collapsed'">
+          <app-roster-details [roster]="detailRow"></app-roster-details>
+      </div>
+      </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="roster-row" [class.roster-expanded-row]="expandedRow === row"
+    (click)="(expandedRow === row) ? expandedRow = null : expandedRow = row"></tr>
+  <tr mat-row *matRowDef="let detailRow; columns: detailColumns;" class="roster-detail-row"></tr>
+  </table>
+</div>

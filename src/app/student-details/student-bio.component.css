@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+table {
+    width: 100%;
+}
+.mat-column-key {
+    text-align: left;
+    color:  #673ab7;
+}
+.mat-column-value {
+    text-align: left;
+    padding-left: 24px;
+}

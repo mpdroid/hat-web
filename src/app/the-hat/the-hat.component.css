@@ -1,0 +1,20 @@
+:host {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+div img {
+    cursor: pointer;
+}
+
+div span {
+    font-family: 'Papyrus' , serif;
+    font-style: italic;
+}

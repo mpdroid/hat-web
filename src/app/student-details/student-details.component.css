@@ -1,0 +1,57 @@
+#student-detail {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  width: 100%;
+  height: 400px;
+  background-color: antiquewhite;
+}
+
+#student-info {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  background-color: greenyellow;
+}
+
+#house {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#house img {
+  margin: 0 auto;
+  width: 100px;
+  padding-bottom: 10px;
+}
+
+#housename {
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.unassigned {
+  color: red;
+  animation: blinker 1s linear infinite;
+}
+
+#explain {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background-color: orange;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.attr {
+  font-size: 60%;
+}
+
+.info-table {
+    width: 100%;
+}

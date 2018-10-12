@@ -1,0 +1,42 @@
+<h2 mat-dialog-title align="center">{{studentName}}</h2>
+<mat-dialog-content align="center">
+  <mat-grid-list cols="2" rowHeight="200px">
+    <mat-grid-tile colspan="1" rowspan="2">
+      <app-student-bio [student]="studentProps"></app-student-bio>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1" color="lightgreen">
+      <div id="house">
+        <img src="../assets/{{student.house | lowercase}}.png" />
+        <div id="housename" [ngClass]="{'unassigned' : student.house === 'Unassigned'}">{{student.house}}</div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1" color="lightpink">
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="attr" *ngIf="student.house === 'Slytherin'">
+    Slytherin Coat of Arms By K'm [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blason_Serpentard.svg">from
+      Wikimedia Commons</a>
+  </div>
+  <div class="attr" *ngIf="student.house === 'Gryffindor'">
+    Gryffindor Coat of Arms By K'm [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blason_Gryffondor.svg">from
+      Wikimedia Commons</a>
+  </div>
+  <div class="attr" *ngIf="student.house === 'Ravenclaw'">
+    Ravenclaw Coat of Arms By Bagui [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blason_Serdaigle.svg">from
+      Wikimedia Commons</a>
+  </div>
+  <div class="attr" *ngIf="student.house === 'Hufflepuff'">
+    Hufflepuff Coat of Arms By Jmh2o [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Coat_of_arms_Hufflepuff.svg">from
+      Wikimedia Commons</a>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Close</button>
+</mat-dialog-actions>
+<!--
+<div class="attr"  *ngIf="student.house === 'ravenclaw'">
+    Ravenclaw Coat of Arms By Bagui [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Blason_Serdaigle.svg">from Wikimedia Commons</a>
+</div>
+<div class="attr" ngIf="student.house === 'hufflepuff'">
+    Hufflepuff Coat of Arms By Jmh2o [<a href="http://www.gnu.org/copyleft/fdl.html">GFDL</a>], <a href="https://commons.wikimedia.org/wiki/File:Coat_of_arms_Hufflepuff.svg">from Wikimedia Commons</a>
+</div>-->

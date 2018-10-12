@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild } from '@angular/core';
+import { TheHatComponent } from './the-hat/the-hat.component';
+import { RosterSummaryComponent } from './roster-summary/roster-summary.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hat-web';
+  @ViewChild(RosterSummaryComponent)  rosterSummaryComponent: RosterSummaryComponent;
+
+
+
+  refresh() {
+    this.rosterSummaryComponent.refreshRosters();
+  }
 }

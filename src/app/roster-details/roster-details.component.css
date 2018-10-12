@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+tr.student-row:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+
+.mat-column-name {
+  width: 50% !important;
+  /* padding-left: 12px !important; */
+}
+
+.mat-column-house {
+  width: 40% !important;
+  text-align: center !important;
+  /* padding: 0px !important; */
+}
+
+.mat-column-house img {
+  width: 20px;
+}
+.mat-column-filler {
+  width: 10% !important;
+  text-align: center !important;
+  /* padding: 0px !important; */
+}
+
+.unassigned {
+  color: red;
+}

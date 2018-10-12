@@ -1,0 +1,21 @@
+<table mat-table [dataSource]="students" class="student-table" >
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <td mat-cell *matCellDef="let row">{{row.firstName}} {{row.lastName}}</td>
+      </ng-container>
+  
+      <!-- House Column -->
+      <ng-container matColumnDef="house">
+        <td mat-cell *matCellDef="let row" [ngClass]="{'unassigned' : row.house === 'Unassigned'}">
+          <span *ngIf="row.house === 'Unassigned'">{{row.house}}</span>
+          <img  *ngIf="row.house !== 'Unassigned'" src="../assets/{{row.house | lowercase}}.png" />
+        </td>
+      </ng-container>
+  
+      <!-- Filler Column -->
+      <ng-container matColumnDef="filler">
+          <td mat-cell *matCellDef="let row" >&nbsp;</td>
+        </ng-container>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="student-row" (click)="showStudentDetails(row)"></tr>  
+  </table>

@@ -1,0 +1,81 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../environments/environment';
+import { Http, ResponseContentType } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+
+import { map,catchError } from 'rxjs/operators';
+import { of, Observable } from "rxjs";
+import { Roster, Student } from './roster';
+const API_URL = environment.apiUrl;
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RosterService {
+
+  first: Roster = { 
+    id: 1,
+    submitDate: new Date("2018-10-12"), 
+    hasTheHatDecided: true,
+    students: [{  
+      id: 1,  
+      firstName: "Harry",
+      lastName: "Potter",
+      nameSuffix: "",
+      gender: "male",
+      hairColor: "black",
+      house: "Gryffindor",
+      netWorth: 1000000
+    },{
+      id: 2,
+      firstName: "Draco",
+      lastName: "Malfoy",
+      nameSuffix: "",
+      gender: "male",
+      hairColor: "silver",
+      house: "Slytherin",
+      netWorth: 1000000000
+    }
+  ] 
+  } as Roster;
+ 
+  constructor(private http: HttpClient) {
+    localStorage.setItem('rosters', JSON.stringify([this.first]);
+
+  }
+
+  private extractData(res: Response) {
+    let body = res;
+    return body || { };
+  }
+
+  getSample() {
+    return this.http
+      .get(API_URL+'/sample')
+      .pipe(map(this.extractData));
+  }
+
+  getRosterFile(id) {
+    return this.http
+      .get(API_URL+'/roster/'+id)
+      .pipe(map(this.extractData));
+  }
+
+  getRosters() {
+    return this.http
+      .get(API_URL+'/rosters')
+      .pipe(map(this.extractData));
+
+    // return of(JSON.parse(localStorage.getItem('rosters')) as Roster[]);
+  }
+
+  uploadRoster(file) {
+    const fd = new FormData();
+    fd.append("file", file);
+    const HttpUploadOptions = {
+      headers: new HttpHeaders({ "Content-Type": "false" })
+    }
+    return this.http
+      .post(API_URL +'/roster',fd)
+  }
+}
