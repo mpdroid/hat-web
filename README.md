@@ -6,9 +6,9 @@ The Sorting Hat assigns pledges to Hogwarts houses.
 - View student bio and the assigned house 
 - See the rules applied by the Hat to assign the house
 
-The Web App depends on Rest services provided by the [Sorting Hat API](https://github.com/mpdroid/hat-web).
+The Web App depends on Rest services provided by the [Sorting Hat API](https://github.com/mpdroid/hat-api/blob/master/README.md).
 
-
+Demonstrates the use of Angular 6 and Angular Material.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
