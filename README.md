@@ -1,14 +1,18 @@
 # Sorting Hat - Web App
 
 
-The Sorting Hat assigns pledges to Hogwarts houses. 
+The Sorting Hat sorts pledges(students) and assigns them to Hogwarts houses. 
+
+Allows you to;
 - Submit class rosters with student bio in a text file 
-- View student bio and the assigned house 
-- See the rules applied by the Hat to assign the house
+- View student bio and their assigned house 
+- View the actual rules applied by the Hat to assign each student to their the house
 
-The Web App depends on Rest services provided by the [Sorting Hat API](https://github.com/mpdroid/hat-api/blob/master/README.md).
+The Web App relies on RESTful services provided by the [Sorting Hat API](https://github.com/mpdroid/hat-api/blob/master/README.md).
 
-Demonstrates the use of Angular 6 and Angular Material.
+Demonstrates the use of;
+- Angular 6
+- Angular Material
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
