@@ -89,7 +89,6 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       downloadLink.click();
       document.body.removeChild(downloadLink);  
-  
     },1000);
   }
 
