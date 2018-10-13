@@ -89,7 +89,7 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       downloadLink.click();
       document.body.removeChild(downloadLink);  
-    },1000);
+    },100);
   }
 
   convertRosterToCSV(roster: Roster) {
@@ -102,7 +102,7 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
       ret = ret + student.gender + ", ";
       ret = ret + this.datePipe.transform(student.dob, 'yyyy-MM-dd') + ", ";
       ret = ret + student.netWorth + ", ";
-      ret = ret + student.hairColor + ", ";
+      ret = ret + student.hairColor;
     })
     return ret;
 
