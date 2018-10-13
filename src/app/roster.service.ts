@@ -23,6 +23,7 @@ export class RosterService {
       lastName: "Potter",
       nameSuffix: "",
       gender: "male",
+      dob: new Date("1980-07-31"),
       hairColor: "black",
       house: "Gryffindor",
       netWorth: 1000000
@@ -32,6 +33,7 @@ export class RosterService {
       lastName: "Malfoy",
       nameSuffix: "",
       gender: "male",
+      dob: new Date("1980-03-02"),
       hairColor: "silver",
       house: "Slytherin",
       netWorth: 1000000000

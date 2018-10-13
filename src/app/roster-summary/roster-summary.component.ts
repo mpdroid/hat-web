@@ -79,14 +79,18 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
   }
 
   downloadFile(response: any, id) {
-    var blob = new Blob([this.convertRosterToCSV(response as Roster)]);
+    var blob = new Blob([this.convertRosterToCSV(response as Roster)], {type : 'text/plain'});
+    console.log(blob);
     const downloadLink = document.createElement("a");
     downloadLink.style.display = "none";
-    document.body.appendChild(downloadLink);
     downloadLink.setAttribute('href', window.URL.createObjectURL(blob));
-    downloadLink.setAttribute('download', 'roster_' + id + '.txt');
-    downloadLink.click();
-    document.body.removeChild(downloadLink);  
+    downloadLink.setAttribute('download', 'roster_' + (new Date()).getTime() + '.txt');
+    document.body.appendChild(downloadLink);
+    setTimeout(() => {
+      downloadLink.click();
+      document.body.removeChild(downloadLink);  
+  
+    },1000);
   }
 
   convertRosterToCSV(roster: Roster) {
@@ -101,7 +105,6 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
       ret = ret + student.netWorth + ", ";
       ret = ret + student.hairColor + ", ";
     })
-
     return ret;
 
   }
