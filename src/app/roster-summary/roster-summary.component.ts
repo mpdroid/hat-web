@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material';
 import { Roster, Student } from '../roster';
 import { RosterService } from '../roster.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { ThrowStmt } from '@angular/compiler';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-roster-summary',
@@ -26,23 +28,40 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
 
   constructor(
     public snackBar: MatSnackBar,
-    private rosterService: RosterService
+    private rosterService: RosterService,
+    private datePipe : DatePipe
     ) { }
 
   ngOnInit() {
-    this.refreshRosters();
+    this.loadRosters();
     this.intervalHolder = setInterval(() => {
-      this.refreshRosters();
+      const rostersTemp = this.rosters.slice();
+      let didUpdate = false;
+      rostersTemp.forEach((roster,i) => {
+        if (!roster.hasTheHatDecided) {
+          this.rosterService.refreshRoster(roster.id).subscribe((res) => {
+            const newRoster = res as Roster;
+            this.rosterService.replaceRosterInLocalStorage(newRoster);
+            this.loadRosters();
+          });
+        }
+       });
     }, 1000 * 10);
   }
+  compare(a,b) {
+    if (a.submitDate > b.submitDate)
+      return -1;
+    if (a.submitDate < b.submitDate)
+      return 1;
+    return 0;
+  }
 
-  refreshRosters() {
+  loadRosters() {
       this.rosterService.getRosters()
       .subscribe( data => {
-        this.rosters = data as Roster[];
-        console.log(this.rosters[0]);
-        console.log(this.rosters[0].students[1]);
-        
+        const rostersTemp = (data as Roster[]);
+        rostersTemp.sort(this.compare);
+        this.rosters = rostersTemp;
       })
 
   }
@@ -53,14 +72,14 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
   
   downloadRoster(event, id) {
     event.stopPropagation();
-    this.rosterService.getRosterFile(id).subscribe(response => this.downloadFile(response, id)),
+    this.rosterService.getRoster(id).subscribe(response => this.downloadFile(response, id)),
                  error => console.log("Error downloading the file."),
                  () => console.info("OK");
 
   }
 
   downloadFile(response: any, id) {
-    var blob = new Blob([response.response]);
+    var blob = new Blob([this.convertRosterToCSV(response as Roster)]);
     const downloadLink = document.createElement("a");
     downloadLink.style.display = "none";
     document.body.appendChild(downloadLink);
@@ -68,6 +87,23 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
     downloadLink.setAttribute('download', 'roster_' + id + '.txt');
     downloadLink.click();
     document.body.removeChild(downloadLink);  
+  }
+
+  convertRosterToCSV(roster: Roster) {
+    let ret = "First Name, Last Name, Suffix, Gender, Date of Birth, Net Worth, Hair Color";
+    roster.students.forEach( (student) => {
+      ret = ret + "\n";
+      ret = ret + student.firstName + ", ";
+      ret = ret + student.lastName + ", ";
+      ret = ret + student.nameSuffix + ", ";
+      ret = ret + student.gender + ", ";
+      ret = ret + this.datePipe.transform(student.dob, 'yyyy-MM-dd') + ", ";
+      ret = ret + student.netWorth + ", ";
+      ret = ret + student.hairColor + ", ";
+    })
+
+    return ret;
+
   }
 
 

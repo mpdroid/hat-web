@@ -14,6 +14,6 @@ export class AppComponent {
 
 
   refresh() {
-    this.rosterSummaryComponent.refreshRosters();
+    this.rosterSummaryComponent.loadRosters();
   }
 }

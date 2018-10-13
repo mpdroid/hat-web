@@ -5,6 +5,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -38,7 +39,8 @@ import { StudentBioComponent } from './student-details/student-bio.component';
     MatSnackBarModule,
     MatGridListModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

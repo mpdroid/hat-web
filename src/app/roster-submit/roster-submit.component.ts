@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { RosterService } from '../roster.service';
+import { Roster } from '../roster';
 
 @Component({
   selector: 'app-roster-submit',
@@ -68,13 +69,6 @@ export class RosterSubmitComponent implements OnInit {
 
   }
 
-  downloadSample() {
-    this.rosterService.getSample().subscribe(response => this.downloadFile(response)),
-                 error => console.log("Error downloading the file."),
-                 () => console.info("OK");
-
-  }
-
   downloadFile(response: any) {
     var blob = new Blob([response.response]);
     const downloadLink = document.createElement("a");
@@ -94,6 +88,9 @@ export class RosterSubmitComponent implements OnInit {
   triggerFileSubmit() {
     this.rosterService.uploadRoster(this.uploaded).subscribe(res => {
       console.log(res);
+      const newRoster = res["response"] as Roster;
+      this.rosterService.addRosterToLocalStorage(newRoster);
+
       this.snackBar.open('The Hat has accepted ' + this.uploaded.name + '.', null , {
         duration: 5000
       });
@@ -101,7 +98,14 @@ export class RosterSubmitComponent implements OnInit {
       this.uploaded = null;
       this.fileUploadEvent.emit();
     }, error => {
-      this.snackBar.open('The Hat has rejected ' + this.uploaded.name + '.', null , {
+      console.log(error);
+      let msg = '';
+      if(error.error.message) {
+        msg = 'The Hat has rejected ' + this.uploaded.name + '. ' + error.error.message;
+      } else {
+        msg = 'The Hat is away. Try again later.';
+      }
+      this.snackBar.open(msg, null , {
         duration: 5000
       });
       this.uploadInput.nativeElement.value = null;

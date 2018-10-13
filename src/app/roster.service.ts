@@ -40,7 +40,31 @@ export class RosterService {
   } as Roster;
  
   constructor(private http: HttpClient) {
-    localStorage.setItem('rosters', JSON.stringify([this.first]);
+    localStorage.setItem('rosters', JSON.stringify([this.first]));
+  }
+
+  replaceRostersInLocalStorage(rosters: Roster[]) {
+    localStorage.setItem("rosters", JSON.stringify(rosters));
+
+  }
+  replaceRosterInLocalStorage(roster: Roster) {
+    const rostersTemp = JSON.parse(localStorage.getItem('rosters')) as Roster[];
+    const index = rostersTemp.findIndex((rosterTemp) => rosterTemp.id == roster.id);
+    if (~index) {
+      rostersTemp[index] = roster;
+    }
+    else {
+      rostersTemp.push(roster);
+    }
+
+    localStorage.setItem("rosters", JSON.stringify(rostersTemp));
+
+  }
+
+  addRosterToLocalStorage(newRoster: Roster) {
+    const rostersTemp = JSON.parse(localStorage.getItem('rosters')) as Roster[];
+    rostersTemp.push(newRoster);
+    localStorage.setItem("rosters", JSON.stringify(rostersTemp));
 
   }
 
@@ -49,9 +73,14 @@ export class RosterService {
     return body || { };
   }
 
-  getSample() {
+  getRoster(id) {
+    const rosters: Roster[] = JSON.parse(localStorage.getItem('rosters')) as Roster[];
+    return of(rosters.find(roster => roster.id === id));
+  }
+
+  refreshRoster(id) {
     return this.http
-      .get(API_URL+'/sample')
+      .get(API_URL+'/rosters/'+id)
       .pipe(map(this.extractData));
   }
 
@@ -62,11 +91,7 @@ export class RosterService {
   }
 
   getRosters() {
-    return this.http
-      .get(API_URL+'/rosters')
-      .pipe(map(this.extractData));
-
-    // return of(JSON.parse(localStorage.getItem('rosters')) as Roster[]);
+    return of(JSON.parse(localStorage.getItem('rosters')) as Roster[]);
   }
 
   uploadRoster(file) {
