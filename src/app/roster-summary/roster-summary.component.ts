@@ -93,7 +93,7 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
   }
 
   convertRosterToCSV(roster: Roster) {
-    let ret = "First Name, Last Name, Suffix, Gender, Date of Birth, Net Worth, Hair Color";
+    let ret = "First Name, Last Name, Suffix, Gender, Date of Birth, Net Worth, Hair Color, Elves Owned, Dementors Battled, House";
     roster.students.forEach( (student) => {
       ret = ret + "\n";
       ret = ret + student.firstName + ", ";
@@ -102,7 +102,10 @@ export class RosterSummaryComponent implements OnInit, OnDestroy {
       ret = ret + student.gender + ", ";
       ret = ret + this.datePipe.transform(student.dob, 'yyyy-MM-dd') + ", ";
       ret = ret + student.netWorth + ", ";
-      ret = ret + student.hairColor;
+      ret = ret + student.hairColor + ", ";
+      ret = ret + student.elvesOwned + ", ";
+      ret = ret + student.dementorsBattled + ", ";
+      ret = ret + student.house ;
     })
     return ret;
 

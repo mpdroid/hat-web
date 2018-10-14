@@ -27,11 +27,13 @@ export class StudentDetailsComponent {
       this.studentProps = [
         { "key": "First Name", "value" : this.student.firstName },
         { "key": "Last Name", "value" : this.student.lastName },
-        { "key": "Suffix", "value" : this.student.nameSuffix },
+        // { "key": "Suffix", "value" : this.student.nameSuffix },
         { "key": "Gender", "value" : this.student.gender },
         { "key": "Date of Birth", "value" : this.datePipe.transform(this.student.dob,'mediumDate') },
         { "key": "Net Worth", "value" : this.student.netWorth + " gringotts" },
-        { "key": "Hair Color", "value" : this.student.hairColor}
+        { "key": "Hair Color", "value" : this.student.hairColor},
+        { "key": "Elves Owned", "value" : this.student.elvesOwned},
+        { "key": "Dementors Battled", "value" : this.student.dementorsBattled}
       ];
     }
 

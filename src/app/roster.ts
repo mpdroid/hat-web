@@ -1,5 +1,3 @@
-import { HowAssigned } from './how-assigned';
-
 export class Roster {
     id: number;
     submitDate: Date;
@@ -16,6 +14,8 @@ export class Student {
     dob: Date;
     netWorth: number;
     hairColor: string;
+    elvesOwned: number;
+    dementorsBattled: number;
     house: string;
-    howAssigned: HowAssigned;
+    rulesFired: string[];
 }

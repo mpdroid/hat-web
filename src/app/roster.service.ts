@@ -26,7 +26,10 @@ export class RosterService {
       dob: new Date("1980-07-31"),
       hairColor: "black",
       house: "Gryffindor",
-      netWorth: 1000000
+      netWorth: 1000000,
+      elvesOwned:0,
+      dementorsBattled: 5,
+      rulesFired: ['Hair Color is Black']
     },{
       id: 2,
       firstName: "Draco",
@@ -36,7 +39,10 @@ export class RosterService {
       dob: new Date("1980-03-02"),
       hairColor: "silver",
       house: "Slytherin",
-      netWorth: 1000000000
+      netWorth: 1000000000,
+      elvesOwned: 5,
+      dementorsBattled: 0,
+      rulesFired: ['hair color is silver']
     }
   ] 
   } as Roster;

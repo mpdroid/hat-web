@@ -4,13 +4,20 @@
     <mat-grid-tile colspan="1" rowspan="2">
       <app-student-bio [student]="studentProps"></app-student-bio>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" color="lightgreen">
+    <mat-grid-tile colspan="1" rowspan="1">
       <div id="house">
-        <img src="../assets/{{student.house | lowercase}}.png" />
+        <img src="assets/{{student.house | lowercase}}.png" />
         <div id="housename" [ngClass]="{'unassigned' : student.house === 'Unassigned'}">{{student.house}}</div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1" color="lightpink">
+    <mat-grid-tile colspan="1" rowspan="1" >
+      <div id="explanation" *ngIf="student.house !== 'Unassigned'" layout="column" layout-align="center start">
+          <div><b><em>Why?</em></b></div>
+          <br>
+          <div *ngFor="let rule of student.rulesFired">
+              {{rule}}
+          </div>
+      </div>
     </mat-grid-tile>
   </mat-grid-list>
   <div class="attr" *ngIf="student.house === 'Slytherin'">
