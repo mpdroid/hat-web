@@ -3,8 +3,7 @@
 
 The Sorting Hat sorts and assigns pledges(students) to (Hogwarts) houses, based on a few rules.
 
-![Rules of the Sorting Hat]
-(https://github.com/mpdroid/hat-web/blob/master/src/assets/hat-mind.png)
+![Rules of the Sorting Hat](https://github.com/mpdroid/hat-web/blob/master/src/assets/hat-mind.png)
 
 - Submit class rosters with student bio in a text file 
 - View student bio and their assigned house 
