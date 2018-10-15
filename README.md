@@ -1,9 +1,11 @@
 # Sorting Hat - Web App
 
 
-The Sorting Hat sorts pledges(students) and assigns them to Hogwarts houses. 
+The Sorting Hat sorts and assigns pledges(students) to (Hogwarts) houses, based on a few rules.
 
-Allows you to;
+![Rules of the Sorting Hat]
+(https://github.com/mpdroid/hat-web/blob/master/src/assets/hat-mind.png)
+
 - Submit class rosters with student bio in a text file 
 - View student bio and their assigned house 
 - View the actual rules applied by the Hat to assign each student to their the house
