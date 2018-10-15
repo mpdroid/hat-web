@@ -2,5 +2,5 @@
     <button *ngIf="!uploaded" id="upload-select-button" mat-raised-button (click)="triggerFileInput()">Upload Class Roster</button>
     <button *ngIf="uploaded" id="upload-submit-button" mat-raised-button color="accent" (click)="triggerFileSubmit()">Submit {{uploaded.name}} ({{ uploaded?.size/1024 | number:'.2' }}KB)</button>
     <input #uploadInput id="upload-input" type="file"  accept="text/plain"  />
-    <br>
+    <div class="sample"><a href="assets/sample.txt" download="sample.txt">sample.txt</a></div>
 </div>

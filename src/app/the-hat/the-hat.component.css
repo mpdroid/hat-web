@@ -12,9 +12,13 @@ div {
 
 div img {
     cursor: pointer;
+    width: 150px;
+    margin: 0 auto;
 }
 
-div span {
+.hat-title {
     font-family: 'Papyrus' , serif;
     font-style: italic;
+    width: 100%;
+    text-align: center;
 }
