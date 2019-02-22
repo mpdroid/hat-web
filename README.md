@@ -1,4 +1,4 @@
-# Sorting Hat - Web App
+# [Sorting Hat](https://goo.gl/2Dwjh5) - Web App
 
 
 The Sorting Hat sorts and assigns pledges(students) to (Hogwarts) houses, based on a few rules.
@@ -14,6 +14,8 @@ The Web App relies on RESTful services provided by the [Sorting Hat API](https:/
 Demonstrates the use of;
 - Angular 6
 - Angular Material
+- Spring Boot
+- Drools rule engine
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.3.
 
