@@ -1,0 +1,7 @@
+First Name, 	Last Name, 	Suffix, 	Gender, 	Date of Birth, 	Net Worth, 	Hair Color, 	Elves Owned, 	Dementors Battled
+Harry, 		Potter, , 			male, 		1980-07-29, 	1000000, 	black, 		0, 		5
+Draco, 		Malfoy, , 			male, 		1980-02-29, 	1000000000, 	silver, 	5, 		0
+Ron, 		Weasley, , 			male, 		1979-11-21, 	10000, 		brown, 		0, 		2
+Hermione, 	Grainger, , 			female, 	1980-03-01, 	100000, 	brown, 		0, 		3
+Luna, 		Lovegood, , 			female, 	1981-01-16, 	100000, 	white, 		0, 		1
+Neville, 	Longbottom, , 			male, 		1979-12-04, 	10000000, 	brown, 		0, 		4
