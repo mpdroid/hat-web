@@ -13,12 +13,12 @@ const API_URL = environment.apiUrl;
 })
 export class RosterService {
 
-  first: Roster = { 
+  first: Roster = {
     id: 1,
-    submitDate: new Date("2018-10-12"), 
+    submitDate: new Date("2018-10-12"),
     hasTheHatDecided: true,
-    students: [{  
-      id: 1,  
+    students: [{
+      id: 1,
       firstName: "Harry",
       lastName: "Potter",
       nameSuffix: "",
@@ -44,9 +44,9 @@ export class RosterService {
       dementorsBattled: 0,
       rulesFired: ['hair color is silver']
     }
-  ] 
+  ]
   } as Roster;
- 
+
   constructor(private http: HttpClient) {
     localStorage.setItem('rosters', JSON.stringify([this.first]));
   }
@@ -105,6 +105,7 @@ export class RosterService {
   uploadRoster(file) {
     const fd = new FormData();
     fd.append("file", file);
+    console.log('uploading ', file);
     const HttpUploadOptions = {
       headers: new HttpHeaders({ "Content-Type": "false" })
     }
